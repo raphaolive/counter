@@ -1,0 +1,218 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto';
+    height: 100%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#voltarBtn {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: auto;
+    height: 30px;
+    background: none;
+    color: white;
+}
+
+#voltarBtn:hover,
+a:hover {
+    transition: 0.5s;
+    text-shadow: 0px 0px 20px #7bb9d870;
+}
+
+#controlerBox {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    color: #121a23;
+    width: 320px;
+    height: 120px;
+    box-shadow: -9px 12px 20px 0px #00000073;
+}
+
+#head {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 2.2rem;
+}
+
+#controlerBox > p {
+    font-weight: bold;
+    color: rgb(54, 54, 54);
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    margin: auto;
+}
+
+.notViseble{
+    display: none;
+}
+
+#selects {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+}
+
+input {
+    position: absolute;
+    margin-left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.447);
+    color: #393939;
+    font-size: 2em;
+    font-weight: bold;
+    width: 50%;
+
+}
+
+button{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    width: 30%;
+    background-color: #d1d1d1;
+    color: rgb(69, 69, 69);
+    font-weight: bold;
+}
+
+button:hover {
+    transition: 0.5s;
+    background-color: #a2a2a2;
+    cursor: pointer;
+}
+
+#clock {
+    flex-direction: row;
+    font-size: 7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#display,
+#msgDisplay {
+    text-shadow: -9px 12px 20px #00000073;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.393);
+}
+
+a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.393);
+}
+
+@media (max-width: 700px) {
+    #clock {
+        font-size: 6rem;
+    }
+
+    #voltarBtn {
+        left: 8%;
+    }
+}
+
+@media (max-width: 500px) {
+
+    #clock {
+        font-size: 5rem;
+    }
+
+    #voltarBtn {
+        left: 10%;
+    }
+
+    #controlerBox {
+        width: 300px;
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 50%;
+    }
+
+    #clock {
+        font-size: 4rem;
+    }
+
+    #voltarBtn {
+        left: 13%;
+    }
+
+    #controlerBox {
+        width: 200px;
+    }
+
+    @media (max-width: 300px) {
+
+        #clock {
+            font-size: 3rem;
+        }
+
+        #voltarBtn {
+            left: 13%;
+        }
+
+        #controlerBox {
+            width: 180px;
+        }
+    }
+
+    @media (max-width: 100px) {
+        #voltarBtn {
+            left: 20%;
+        }
+
+        #controlerBox {
+            width: 100px;
+        }
+    }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador Regressivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@400;500&display=swap");
+</style>
+
+<body>
+    <main>
+        <button onclick="reload()" id="voltarBtn">Voltar</button>
+        <h1 id="head">Bem vindo ao Counter!</h1>
+        <div id="controlerBox">
+            <p id="title">Selecione a hora... 🕐</p>
+            <div id="selects">
+                <div id="horas">
+                    <input type="number" name="hora" class="" id="horaSele" max="23" min="1" value="19">
+                </div>
+                <div id="minutos">
+                    <input type="number" name="minuto" class="notViseble" id="minutoSele" max="59" value="30">
+                </div>
+            </div>
+            <input type="text" name="msg" id="msg" class="notViseble" placeholder="msg...">
+            <button onclick="avancar1()" id="avancar1" class="">Avançar</button>
+            <button onclick="avancar2()" id="avancar2" class="notViseble">Avançar</button>
+            <button onclick="start()" id="comecar" class="notViseble">Começar</button>
+        </div>
+        <div id="clock">
+            <h1 id="display" class=""></h1>
+            <h1 id="msgDisplay" class=""></h1>
+        </div>
+    </main>
+    <footer>
+        <p>
+            created by
+            <a href="https://www.linkedin.com/in/raphael-oliveira-santos-18967b225/" target="_blank"><strong>Raphael O.
+                    Santos</strong></a>
+        </p>
+    </footer>
+</body>
+
+<script>
+    //Date
+    const date = new Date();
+    const day = date.getDate();
+    const hour = date.getHours();
+    const min = date.getMinutes();
+    //Heads and Titles
+    const head = document.getElementById("head");
+    const title = document.getElementById("title")
+    const display = document.getElementById("display");
+    const msgDisplay = document.getElementById("msgDisplay");
+
+    const controlerBox = document.getElementById("controlerBox")
+    //inputs
+    const h = document.getElementById("horaSele");
+    const minut = document.getElementById("minutoSele");
+    const msgInput = document.getElementById("msg")
+    //buttons
+    const btnAvancar1 = document.getElementById("avancar1");
+    const btnAvancar2 = document.getElementById("avancar2");
+    const voltarBtn = document.getElementById("voltarBtn")
+    const comecarBtn = document.getElementById("comecar")
+
+    let msg
+    let hora;
+    let minuto;
+    let nextTime
+    let difference
+
+    function avancar1() {
+        if(h.value > 24){
+            title.innerText = "Digite um horário existente. 🤪"
+        } else {
+            if (h.value >= hour) {
+                title.innerText = "e os minutos."
+                h.classList.add("notViseble")
+                btnAvancar1.classList.add("notViseble")
+                minut.classList.remove("notViseble")
+                btnAvancar2.classList.remove("notViseble")
+            } else {
+                title.innerText = "A hora deve ser a mesma ou mais tarde do que a atual. ⚠️"
+            }
+        }
+    }
+
+    function avancar2() {
+            if (h.value == hour && minut.value <= min) {
+                title.innerText = "A hora do evento deve ser pelo menos 1 minuto mais tarde do que a hora atual. ⚠️"
+            } else {
+                title.innerText = "Agora uma mensagem. 💬"
+                minut.classList.add("notViseble")
+                btnAvancar2.classList.add("notViseble")
+                msgInput.classList.remove("notViseble")
+                comecarBtn.classList.remove("notViseble")
+            }
+    }
+
+    function start() {
+        head.style.display = "none"
+        msg = msgInput.value;
+        hora = h.value;
+        minuto = minut.value;
+        controlerBox.style.display = "none"
+        voltarBtn.style.display = "block"
+        setInterval(updateTime, 1000)
+    }
+
+
+
+    function updateTime(reference) {
+        const current = new Date()
+        const nextTime = new Date(`Tue Oct ${day} 2022 ${hora}:${minuto}:00`);
+        const difference = nextTime - current;
+
+        const hours = Math.floor(difference / 1000 / 60 / 60);
+        const minutes = Math.floor(difference / 1000 / 60) % 60;
+        const seconds = Math.floor(difference / 1000) % 60;
+
+        let horas = hours < 10 ? `0${hours}` : `${hours}`;
+        let minutos = minutes < 10 ? `0${minutes}` : `${minutes}`;
+        let segundos = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+        if (horas != 00 && minutos != 00 && segundos != 00) {
+            display.textContent = `${horas}:${minutos}:${segundos}`;
+        }
+        if (horas == 00 && minutos != 00 && segundos != 00) {
+            display.textContent = `${minutos}:${segundos}`;
+        }
+        if (horas == 00 && minutos == 00 && segundos != 00) {
+            display.textContent = `${segundos}`;
+        }
+        if (horas == 0 && minutos == 0 && segundos == 0) {
+            display.classList.add("notViseble")
+            msgDisplay.textContent = msg
+        }
+
+    }
+
+    function reload() {
+        window.location.href = "index.html"
+    }
+</script>
+
+</html>
