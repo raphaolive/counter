@@ -48,6 +48,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%);
     font-size: 2.2rem;
+    text-align: center;
 }
 
 #controlerBox > p {
@@ -58,6 +59,7 @@ a:hover {
     left: 50%;
     transform: translate(-50%);
     margin: auto;
+    text-align: center;
 }
 
 .notViseble{
@@ -132,6 +134,7 @@ button:hover {
 #display,
 #msgDisplay {
     text-shadow: -9px 12px 20px #00000073;
+    text-align: center;
 }
 
 footer {
