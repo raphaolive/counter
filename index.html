@@ -49,6 +49,7 @@
     //Date
     const date = new Date();
     const day = date.getDate();
+    const month = date.getMonth()+1;
     const hour = date.getHours();
     const min = date.getMinutes();
     //Heads and Titles
@@ -116,9 +117,9 @@
 
     function updateTime(reference) {
         const current = new Date()
-        const nextTime = new Date(`Tue Oct ${day} 2022 ${hora}:${minuto}:00`);
+        const nextTime = new Date(`Tue ${month} ${day} 2022 ${hora}:${minuto}:00`);
         const difference = nextTime - current;
-
+        
         const hours = Math.floor(difference / 1000 / 60 / 60);
         const minutes = Math.floor(difference / 1000 / 60) % 60;
         const seconds = Math.floor(difference / 1000) % 60;
